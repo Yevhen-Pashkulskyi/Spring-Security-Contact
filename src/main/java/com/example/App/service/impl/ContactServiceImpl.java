@@ -30,8 +30,8 @@ public class ContactServiceImpl implements ContactService {
     public void saveContact(ContactDto contactDto) {
         Contact contact = new Contact();
         contact.setName(contactDto.getFirstName() + " " + contactDto.getLastName());
-        contact.setEmail(contactDto.getEmail());
-        contact.setPhone(contactDto.getPhone());
+        contact.setEmail(contactDto.getEmail().toLowerCase());
+        contact.setPhone(contactDto.getPhone());//todo додати метод для вірного формату
         contact.setPassword(passwordEncoder.encode(contactDto.getPassword()));
         Role role = roleRepository.findByName("ROLE_ADMIN");
         if (role == null) {
@@ -42,7 +42,12 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public Contact findByEmail(String email) {
-        return contactRepository.findByEmail(email);
+        return contactRepository.findByEmail(email.toLowerCase());//add toLowerCase
+    }
+    //add для перевірку однаково телефону
+    @Override
+    public Contact findByPhone(String phone) {
+        return contactRepository.findByPhone(phone);
     }
 
     @Override

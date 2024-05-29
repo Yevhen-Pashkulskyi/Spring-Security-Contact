@@ -16,10 +16,10 @@ public class ContactDto {
     private String firstName;
     @NotEmpty(message = "Last name should not be empty")
     private String lastName;
-    @NotEmpty(message = "Phone should not be empty")
-    private String phone;
     @NotEmpty(message = "Email should not be empty")
     private String email;
+    @NotEmpty(message = "Phone should not be empty")
+    private String phone;
     @NotEmpty(message = "Password should not by empty")
     private String password;
 }

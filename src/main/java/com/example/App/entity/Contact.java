@@ -33,7 +33,7 @@ public class Contact implements Serializable {
     private String password;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "contact_roles",
+            name = "contact_roles",//contacts_roles?
             joinColumns = {@JoinColumn(name = "CONTACT_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")}
     )private List<Role> roles = new ArrayList<>();

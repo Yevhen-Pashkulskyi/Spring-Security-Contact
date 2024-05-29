@@ -8,5 +8,6 @@ import java.util.List;
 public interface ContactService {
     void saveContact(ContactDto contactDto);
     Contact findByEmail(String email);
+    Contact findByPhone(String phone);// add
     List<ContactDto> findAllContacts();
 }
