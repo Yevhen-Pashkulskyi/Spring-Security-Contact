@@ -64,6 +64,7 @@ public class ContactServiceImpl implements ContactService {
         contactDto.setFirstName(name[0]);
         contactDto.setLastName(name[1]);
         contactDto.setEmail(contact.getEmail());
+        contactDto.setPhone(contact.getPhone());
         return contactDto;
     }
 
