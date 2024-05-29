@@ -20,7 +20,7 @@ public class AppSecurity {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -31,10 +31,14 @@ public class AppSecurity {
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/contacts").hasRole("ADMIN")).
-                formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").
-                        defaultSuccessUrl("/contacts").permitAll())
-                .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .permitAll());
+                formLogin(
+                        form -> form.loginPage("/login")
+                                .loginProcessingUrl("/login")
+                                .defaultSuccessUrl("/contacts").permitAll()
+                ).logout(
+                        logout -> logout
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .permitAll());
         return http.build();
     }
 

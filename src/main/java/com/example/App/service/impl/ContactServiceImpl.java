@@ -38,6 +38,7 @@ public class ContactServiceImpl implements ContactService {
             role = checkRoleExists();
         }
         contact.setRoles(List.of(role));
+        contactRepository.save(contact);
     }
 
     @Override
@@ -63,7 +64,6 @@ public class ContactServiceImpl implements ContactService {
         contactDto.setFirstName(name[0]);
         contactDto.setLastName(name[1]);
         contactDto.setEmail(contact.getEmail());
-        contactDto.setPhone(contact.getPhone());
         return contactDto;
     }
 

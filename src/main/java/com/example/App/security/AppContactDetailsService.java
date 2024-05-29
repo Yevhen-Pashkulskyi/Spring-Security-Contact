@@ -3,7 +3,6 @@ package com.example.App.security;
 import com.example.App.entity.Contact;
 import com.example.App.entity.Role;
 import com.example.App.repository.ContactRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,8 +15,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class AppContactDetailsService implements UserDetailsService {
-    @Autowired
-    private ContactRepository contactRepository;
+
+    private final ContactRepository contactRepository;
 
     public AppContactDetailsService(ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
